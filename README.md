@@ -6,4 +6,6 @@ In this test project I will use the following technologies:
 </br> Spring
 </br> MySql
 </br> Tomcat7
-</br> Maven
+</br> Maven</br>
+
+use: <b><u> mvn tomcat7:deploy </u></b> to package and deploy project. Don't forget to change deploy properties (host, user, password, etc.) in pom.xml
