@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -43,37 +44,38 @@
     </nav>
     </div>
     <div class="container">
-        <div class="card text-center">
+        <div class="text-center">
             <div class="card-body">
-                <h5 class="card-title">Welcome in Health Supporter</h5>
+                <br>
+                <h3 class="card-title">Welcome to</h3>
+                <h2>Health Supporter</h2>
                 <p>${message}</p>
-                <p class="card-text">Here you can find various ways to maintain your health.</p>
-                <a href="#" class="btn btn-primary">Read more</a>
+                <form:form action="search/" method="get">
+                    <input class="btn btn-primary" type="submit" value="Get Started"/>
+                </form:form>
             </div>
         </div>
+        <br>
         <div class="card-deck">
             <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
+                <img class="card-img-top" src="https://julianachinisogai.com/wp-content/uploads/sites/111/2019/09/chinese-medicine.jpg" alt="Herbal">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <h5 class="card-title">Herbal medicine</h5>
+                    <p class="card-text">Plants have been the basis for medical treatments through much of human history, and such traditional medicine is still widely practiced today.</p>
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
+                <img class="card-img-top" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/5-7-color-chakra-human-lotus-pose-yoga-abstract-world-universe-i-benjavisa-ruangvaree.jpg" alt="Yoga">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <h5 class="card-title">Yoga and Physical medicine</h5>
+                    <p class="card-text">Physical medicine and rehabilitation, also known as physiatry and physiatrics, is a branch of medicine that aims to enhance and restore functional ability and quality of life to those with physical impairments or disabilities.</p>
                 </div>
             </div>
             <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
+                <img class="card-img-top" src="https://riotimes-11af1.kxcdn.com/wp-content/uploads/2019/10/Benzodiazepines.jpg" alt="Pharmacology">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <h5 class="card-title">Pharmacology</h5>
+                    <p class="card-text">Pharmacology discovery and characterization of chemicals which show biological effects and the elucidation of cellular and organismal function in relation to these chemicals.</p>
                 </div>
             </div>
         </div>

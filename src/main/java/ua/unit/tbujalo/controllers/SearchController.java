@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/")
-public class HomeController {
+@RequestMapping("search/")
+public class SearchController {
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String homePage(Model model){
-        model.addAttribute("message", "Hello dear guest!");
-        return "home";
+    public String getSearchPage(Model model){
+        return "search";
     }
 }
