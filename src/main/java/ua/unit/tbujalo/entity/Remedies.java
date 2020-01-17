@@ -1,12 +1,30 @@
 package ua.unit.tbujalo.entity;
 
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "remedies")
 public class Remedies {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "type")
     private RemediesType type;
+
+    @Column(name = "indication")
     private String indication;
+
+    @Column(name = "contraindication")
     private String contraindication;
+
+    @Column(name = "drugUse")
     private String drugUse;
 
     public Remedies() {

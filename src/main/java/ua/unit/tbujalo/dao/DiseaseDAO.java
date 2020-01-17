@@ -4,8 +4,10 @@ import ua.unit.tbujalo.entity.Disease;
 
 import java.util.List;
 
-public interface DiseaseRepositoryDAO {
+public interface DiseaseDAO {
 
     List<Disease> getAllDisease();
+
+    void addDisease(Disease disease);
 
 }

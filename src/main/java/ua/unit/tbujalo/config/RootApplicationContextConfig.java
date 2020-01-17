@@ -9,6 +9,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -16,6 +17,7 @@ import java.util.Properties;
 @Configuration
 @ComponentScan("ua.unit.tbujalo")
 @PropertySource("classpath:db.properties")
+@EnableTransactionManagement
 public class RootApplicationContextConfig {
 
     @Autowired
@@ -35,8 +37,8 @@ public class RootApplicationContextConfig {
     public LocalSessionFactoryBean localSessionFactoryBean(){
         LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
         factoryBean.setDataSource(dataSource());
+        factoryBean.setPackagesToScan("ua.unit.tbujalo.entity");
         factoryBean.setHibernateProperties(hibernateProperties());
-        factoryBean.setPackagesToScan();
         return factoryBean;
     }
 

@@ -1,6 +1,5 @@
 package ua.unit.tbujalo.controllers;
 
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

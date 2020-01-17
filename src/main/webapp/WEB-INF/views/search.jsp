@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: tbujalo
@@ -12,5 +13,12 @@
 </head>
 <body>
     <h3>Search</h3>
+<div>
+    <c:forEach var="disease" items="${allDisease}">
+        <h4>${disease.name}</h4>
+        <p>${disease.description}</p>
+        <a href="${disease.link}">Go to Wikipedia</a>
+    </c:forEach>
+</div>
 </body>
 </html>

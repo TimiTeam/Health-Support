@@ -5,7 +5,7 @@ import ua.unit.tbujalo.entity.RemediesType;
 
 import java.util.List;
 
-public interface RemediesRepositoryDAO {
+public interface RemediesDAO {
 
     List<Remedies> getAllRemediesByDiseaseId(int diseaseId);
 
