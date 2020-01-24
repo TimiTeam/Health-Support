@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "disease")
+@Table(name = "diseases")
 public class Disease {
 
     @Id
@@ -22,17 +22,19 @@ public class Disease {
     @Column(name = "link")
     private String link;
 
+    @Column(name = "category")
+    private String category;
+
     public Disease() {
     }
 
-    public Disease(int diseaseId, String name, String description, String link) {
-        this.diseaseId = diseaseId;
+
+    public Disease(String name, String category, String description, String link) {
         this.name = name;
         this.description = description;
         this.link = link;
+        this.category = category;
     }
-
-
 
     public String getName() {
         return name;
@@ -48,6 +50,14 @@ public class Disease {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public int getDiseaseId() {

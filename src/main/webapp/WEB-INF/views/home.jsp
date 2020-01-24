@@ -24,13 +24,13 @@
             <span class="text-muted">Toggleable via the navbar brand.</span>
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="update/">Management Diseases</a>
+                        <a class="nav-link" href="<c:url value="/manage/"/>">Management Diseases</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link active" href="<c:url value="/"/>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="<c:url value="/search/"/>">Search</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#">Disabled</a>

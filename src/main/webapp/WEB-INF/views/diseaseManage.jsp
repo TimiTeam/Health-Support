@@ -17,23 +17,47 @@
     <title>Disease Management</title>
 </head>
 <body>
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h4 class="text-white">Collapsed content</h4>
+            <span class="text-muted">Toggleable via the navbar brand.</span>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value="/manage/"/>">Management Diseases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="<c:url value="/"/>">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value="/search/"/>">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    </div>
 <div class="container">
     <div class="col-md-offset-1 col-md-10">
         <h2>Disease Management</h2>
         <hr />
 
-        <form:form action="add" method="get">
+        <form:form action="new" method="get">
             <input class="btn btn-primary" type="submit" value="Add new Disease"/>
         </form:form>
 
-        <!-- <input type="button" value="Add Customer"
-               class="btn btn-primary" />
-               onclick="window.location.href='/update/add'; return false;" -->
         <br/>
         <br/>
         <div class="panel panel-info">
             <div class="panel-heading">
-                <div class="panel-title">Customer List</div>
+                <div class="panel-title">Disease List</div>
             </div>
             <div class="panel-body">
                 <table class="table table-striped table-bordered">
@@ -44,16 +68,13 @@
                         <th>Action</th>
                     </tr>
 
-                    <!-- loop over and print our customers -->
                     <c:forEach var="disease" items="${allDisease}">
 
-                        <!-- construct an "update" link with customer id -->
-                        <c:url var="updateLink" value="/update/add">
+                        <c:url var="updateLink" value="/manage/update">
                             <c:param name="customerId" value="${disease.diseaseId}" />
                         </c:url>
 
-                        <!-- construct an "delete" link with customer id -->
-                        <c:url var="deleteLink" value="/update/add">
+                        <c:url var="deleteLink" value="/manage/delete">
                             <c:param name="customerId" value="${disease.diseaseId}" />
                         </c:url>
 
@@ -63,8 +84,7 @@
                             <td>${disease.link}</td>
 
                             <td>
-                                <!-- display the update link --> <a href="${updateLink}">Update</a>
-                                | <a href="${deleteLink}"
+                                <a href="${deleteLink}"
                                      onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
                             </td>
 
