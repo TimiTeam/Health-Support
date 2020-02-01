@@ -9,4 +9,9 @@ public interface DiseaseService {
     List<Disease> getAllDisease();
 
     void addDisease(Disease disease);
+
+    void deleteDiseaseById(int diseaseId);
+
+    Disease getDiseaseById(int diseaseId);
+
 }

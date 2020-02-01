@@ -10,4 +10,8 @@ public interface DiseaseDAO {
 
     void addDisease(Disease disease);
 
+    void deleteDiseaseById(int diseaseId);
+
+    Disease getDiseaseById(int diseaseId);
+
 }

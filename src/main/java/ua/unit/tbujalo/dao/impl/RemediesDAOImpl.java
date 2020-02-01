@@ -22,4 +22,6 @@ public class RemediesDAOImpl implements RemediesDAO {
     public List<Remedies> getAllRemediesByDiseaseIdAndRemediesType(int diseaseId, RemediesType type) {
         return null;
     }
+
+
 }

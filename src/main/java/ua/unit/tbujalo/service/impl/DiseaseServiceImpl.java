@@ -26,4 +26,17 @@ public class DiseaseServiceImpl implements DiseaseService {
     public void addDisease(Disease disease) {
         diseaseDAO.addDisease(disease);
     }
+
+    @Override
+    @Transactional
+    public void deleteDiseaseById(int diseaseId) {
+        diseaseDAO.deleteDiseaseById((diseaseId));
+    }
+
+    @Override
+    @Transactional
+    public Disease getDiseaseById(int diseaseId) {
+        return diseaseDAO.getDiseaseById(diseaseId);
+    }
+
 }

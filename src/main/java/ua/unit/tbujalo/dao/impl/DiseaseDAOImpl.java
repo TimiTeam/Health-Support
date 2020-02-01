@@ -41,4 +41,19 @@ public class DiseaseDAOImpl implements DiseaseDAO {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(disease);
     }
+
+
+    @Override
+    public void deleteDiseaseById(int diseaseId){
+        Session session = sessionFactory.getCurrentSession();
+        Disease disease = session.byId(Disease.class).load(diseaseId);
+        session.delete(disease);
+    }
+
+    @Override
+    public Disease getDiseaseById(int diseaseId) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.byId(Disease.class).load(diseaseId);
+    }
+
 }

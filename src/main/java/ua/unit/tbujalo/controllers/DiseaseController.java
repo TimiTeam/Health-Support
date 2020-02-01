@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import ua.unit.tbujalo.entity.Disease;
 import ua.unit.tbujalo.service.DiseaseService;
 
@@ -35,16 +36,15 @@ public class DiseaseController {
 
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String updateDisease(Model model){
-        Disease disease = new Disease();
-        model.addAttribute("newDisease", disease);
-        return "redirect:/update/";
+    public String updateDisease(@RequestParam("diseaseId") int diseaseId, Model model){
+        model.addAttribute("disease", diseaseService.getDiseaseById(diseaseId));
+        return "addNewDisease";
     }
 
+
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public String delateDisease(Model model){
-        Disease disease = new Disease();
-        model.addAttribute("newDisease", disease);
+    public String deleteDisease(@RequestParam("diseaseId") int diseaseId){
+        diseaseService.deleteDiseaseById(diseaseId);
         return "redirect:/manage/";
     }
 
@@ -55,6 +55,6 @@ public class DiseaseController {
             return "error";
         }
         diseaseService.addDisease(disease);
-        return "diseaseManage";
+        return "redirect:/manage/";
     }
 }

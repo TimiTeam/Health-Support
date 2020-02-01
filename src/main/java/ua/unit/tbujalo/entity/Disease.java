@@ -1,12 +1,13 @@
 package ua.unit.tbujalo.entity;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "diseases")
-public class Disease {
+public class Disease implements Serializable {
+
+    private static final long serialVersionUID = -1798070786993154676L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
