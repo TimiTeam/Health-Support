@@ -16,7 +16,7 @@ public class Remedies {
     private String name;
 
     @Column(name = "type")
-    private RemediesType type;
+    private String type;
 
     @Column(name = "indication")
     private String indication;
@@ -30,7 +30,7 @@ public class Remedies {
     public Remedies() {
     }
 
-    public Remedies(int id, String name, RemediesType type) {
+    public Remedies(int id, String name, String type) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -72,7 +72,7 @@ public class Remedies {
         return id;
     }
 
-    public RemediesType getType() {
+    public String getType() {
         return type;
     }
 

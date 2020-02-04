@@ -12,40 +12,11 @@
 
 <html>
 <head>
-<link href="<c:url value="/resources/css/bootstrap.min.css" />"
-          rel="stylesheet">
-    <script src="<c:url value="/resources/js/jquery-2.1.1.min.js" />"></script>
-    <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+    <jsp:include page="head.jsp"/>
     <title>Add Disease</title>
 </head>
 <body>
-<div class="pos-f-t">
-    <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
-            <h4 class="text-white">Collapsed content</h4>
-            <span class="text-muted">Toggleable via the navbar brand.</span>
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/manage/"/>">Management Diseases</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="<c:url value="/"/>">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/search/"/>">Search</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                </ul>
-        </div>
-    </div>
-    <nav class="navbar navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
-    </div>
+<jsp:include page="navbar.jsp"/>
 <div class="container">
     <form:form method="POST" action="add" modelAttribute="disease">
      <div class="form-group">
@@ -80,7 +51,7 @@
       </div>
       <div class="form-group">
         <form:label path="description" for="exampleFormControlTextarea1">Short description</form:label><br>
-        <form:textarea path="description" maxlength="250" class="form-control" rows="3"/><br>
+        <form:textarea path="description" class="form-control" rows="3"/><br>
       </div>
          <input type="submit" class="btn btn-primary" value="Submit form"/>
     </form:form>

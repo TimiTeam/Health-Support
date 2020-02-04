@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/manage")
+@RequestMapping(value = "/disease")
 public class DiseaseController {
 
     @Autowired
@@ -45,7 +45,7 @@ public class DiseaseController {
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String deleteDisease(@RequestParam("diseaseId") int diseaseId){
         diseaseService.deleteDiseaseById(diseaseId);
-        return "redirect:/manage/";
+        return "redirect:/disease/";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -55,6 +55,6 @@ public class DiseaseController {
             return "error";
         }
         diseaseService.addDisease(disease);
-        return "redirect:/manage/";
+        return "redirect:/disease/";
     }
 }
