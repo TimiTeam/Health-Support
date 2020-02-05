@@ -29,13 +29,15 @@
         $("#text").on('input', function() {
             $("#select").remove();
             $.ajax({
-                type: "GET",
+                type: "post",
                 url: '<c:url value="/remedies/ajax"/>',
-                data: {text:this.value},
-                timeout: 600000,
+                cache: false,
+                data: {
+                    text:this.value
+                },
                 success: function (data) {
 
-                    console.log("SUCCESS : ", data);
+                    console.log("SUCCESS : ", JSON.stringify(data));
                     /*
                     var json = "<h4>Ajax Response</h4>&lt;pre&gt;"
                         + JSON.stringify(data, null, 4) + "&lt;/pre&gt;";

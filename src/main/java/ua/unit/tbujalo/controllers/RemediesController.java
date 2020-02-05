@@ -1,17 +1,23 @@
 package ua.unit.tbujalo.controllers;
 
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ua.unit.tbujalo.entity.Remedies;
 import ua.unit.tbujalo.service.DiseaseService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -56,19 +62,23 @@ public class RemediesController {
         return "redirect:/remedies/";
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/ajax", method = RequestMethod.GET)
-    public ResponseEntity<List<String>> ajaxMessage(@Valid @RequestParam(name = "text") String text){
-        List<String> response = new ArrayList<>();
+    @RequestMapping(value = "/ajax", method = RequestMethod.POST)
+    public @ResponseBody String ajaxMessage(@Valid @RequestParam(name = "text") String text){
+        List<String> result = new ArrayList<>();
         if ("Hello".equals(text)){
-            response.add("World");
+            result.add("World");
         }
-        response.add("Timur");
-        logger.debug("in axaj");
+        logger.debug("in axaj.");
+        result.add("Timur");
+        ObjectMapper Obj = new ObjectMapper();
+        String jsonStr = "Error";
         try {
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            jsonStr = Obj.writeValueAsString(result);
         }
+        catch (IOException e){
+            logger.debug("error creating jsone str");
+        }
+        return jsonStr;
     }
+
 }
