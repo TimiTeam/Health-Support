@@ -20,7 +20,7 @@
 <jsp:include page="navbar.jsp"/>
 <div class="container">
     <!-- Default form contact -->
-    <form:form class="text-center border border-light p-5" method="POST" action="add" modelAttribute="remedies">
+    <form:form id="remediesForm" class="text-center border border-light p-5" method="POST" action="add" modelAttribute="remedies">
 
         <p class="h4 mb-4">Fill it</p>
 
@@ -55,7 +55,6 @@
                 </tbody>
             </table>
         </div>
-        <button type="button" id="print" class="btn btn-outline-primary" onclick="printText(this)">Print</button>
         <script>
 
             var availableTags = [];
@@ -69,15 +68,15 @@
             function removeElem(id) {
                 $("#" + id).remove();
             }
-
-            function printText(e) {
+            $("#remediesForm").submit(function( event ) {
+                event.preventDefault();
                 var text = "";
-
                 $(".data").each(function () {
-                    text += $(this).text() + ", ";
+                     text += $(this).text() + ", ";
                 });
                 $("#indication").val(text);
-            }
+                $(this).unbind('submit').submit();
+            });
 
             $("#addBtn").on('click', function (e) {
                 var val = $("#tags").val();
@@ -122,7 +121,7 @@
             <form:textarea path="drugUse" class="form-control" rows="5"/><br>
         </div>
 
-        <button class="btn btn-info btn-block" type="submit">Send</button>
+        <button id="submitBtn"class="btn btn-info btn-block" type="submit">Send</button>
 
     </form:form>
     <!-- Default form contact -->
