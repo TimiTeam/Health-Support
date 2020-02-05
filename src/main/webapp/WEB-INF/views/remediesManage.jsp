@@ -17,51 +17,6 @@
 <jsp:include page="navbar.jsp"/>
 <div class="container">
     <a class="btn btn-primary btn-lg btn-block" href="<c:url value="/remedies/new"/>">Add new Remedies</a>
-    <form>
-        <input id="text" type="text">
-        </br>
-        <select id="select" multiple data-role="tagsinput" name="diseases">
-            <option value="Amsterdam">Amsterdam</option>
-            <option value="Washington">Washington</option>
-        </select>
-    </form>
-    <script>
-        $("#text").on('input', function() {
-            $("#select").remove();
-            $.ajax({
-                type: "post",
-                url: '<c:url value="/remedies/ajax"/>',
-                cache: false,
-                data: {
-                    text:this.value
-                },
-                success: function (data) {
-
-                    console.log("SUCCESS : ", JSON.stringify(data));
-                    /*
-                    var json = "<h4>Ajax Response</h4>&lt;pre&gt;"
-                        + JSON.stringify(data, null, 4) + "&lt;/pre&gt;";
-                    $('#feedback').html(json);
-
-                    console.log("SUCCESS : ", data);
-                    $("#btn-search").prop("disabled", false);*/
-
-                },
-                error: function (e) {
-                    /*
-                                        var json = "<h4>Ajax Response</h4>&lt;pre&gt;"
-                                            + e.responseText + "&lt;/pre&gt;";
-                                        $('#feedback').html(json);
-
-                                        console.log("ERROR : ", e);
-                                        $("#btn-search").prop("disabled", false);
-                    */
-                    console.log("ERROR : ", e);
-                }
-            });
-        });
-
-    </script>
 </div>
 </body>
 </html>

@@ -1,10 +1,9 @@
-package ua.unit.tbujalo.dao;
+package ua.unit.tbujalo.service;
 
 import ua.unit.tbujalo.entity.Remedies;
-
 import java.util.List;
 
-public interface RemediesDAO {
+public interface RemediesService {
 
     List<Remedies> getAllRemedies();
 

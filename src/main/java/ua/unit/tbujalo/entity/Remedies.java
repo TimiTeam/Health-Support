@@ -30,10 +30,12 @@ public class Remedies {
     public Remedies() {
     }
 
-    public Remedies(int id, String name, String type) {
-        this.id = id;
+    public Remedies(String name, String type, String indication, String contraindication, String drugUse) {
         this.name = name;
         this.type = type;
+        this.indication = indication;
+        this.contraindication = contraindication;
+        this.drugUse = drugUse;
     }
 
     public String getName() {
@@ -68,6 +70,10 @@ public class Remedies {
         this.drugUse = drugUse;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public int getId() {
         return id;
     }
@@ -76,4 +82,15 @@ public class Remedies {
         return type;
     }
 
+    @Override
+    public String toString() {
+        return "Remedies{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", indication='" + indication + '\'' +
+                ", contraindication='" + contraindication + '\'' +
+                ", drugUse='" + drugUse + '\'' +
+                '}';
+    }
 }

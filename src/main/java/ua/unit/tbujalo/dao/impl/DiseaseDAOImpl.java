@@ -16,7 +16,6 @@ import java.util.List;
 @Repository
 public class DiseaseDAOImpl implements DiseaseDAO {
 
-
     private SessionFactory sessionFactory;
 
     @Autowired
