@@ -20,7 +20,10 @@
 <jsp:include page="navbar.jsp"/>
 <div class="container">
     <!-- Default form contact -->
-    <form:form id="remediesForm" class="text-center border border-light p-5" method="POST" action="add" modelAttribute="remedies">
+    <form:form id="remediesForm" class="text-center border border-light p-5" method="POST" action="add"
+               modelAttribute="remedies">
+
+        <form:hidden path="id"/>
 
         <p class="h4 mb-4">Fill it</p>
 
@@ -63,24 +66,45 @@
                 $('#tags').autocomplete({
                     source: availableTags
                 });
+                var indication = $("#indication");
+                var indVal = indication.val();
+                if (indVal.length > 0) {
+                    var arr = indVal.split(",");
+                    $.each(arr, function (index, value) {
+                        $("#diseasesName").append("<tr id='disease" + index + "'>" +
+                            "                                <td class=\"col-1 data\">" + value + "</td>" +
+                            "                                <td class=\"col-4\"><a class=\"badge badge-danger\" onclick=\"removeElem('disease" + index + "')\">x</a></td>" +
+                            "                            </tr>");
+                    });
+                    diseaseNameCount = arr.length;
+                    indication.val("");
+                }
             });
 
             function removeElem(id) {
                 $("#" + id).remove();
             }
-            $("#remediesForm").submit(function( event ) {
+
+            $("#remediesForm").submit(function (event) {
                 event.preventDefault();
-                var text = "";
-                $(".data").each(function () {
-                     text += $(this).text() + ", ";
-                });
-                $("#indication").val(text);
-                $(this).unbind('submit').submit();
+                if (confirm("Send form?")) {
+                    var text = "";
+                    var data = $(".data");
+                    data.each(function (i, v) {
+                        text += $(this).text();
+                        if (i + 1 !== data.length) {
+                            text += ", ";
+                        }
+                    });
+                    $("#indication").val(text);
+                    $(this).unbind('submit').submit();
+                }
+                return false;
             });
 
             $("#addBtn").on('click', function (e) {
                 var val = $("#tags").val();
-                if (val.length > 1) {
+                if (val.length > 0) {
                     ++diseaseNameCount;
                     $("#diseasesName").append("<tr id='disease" + diseaseNameCount + "'>" +
                         "                                <td class=\"col-1 data\">" + val + "</td>" +
@@ -99,8 +123,8 @@
                     },
                     success: function (data) {
 
-                        console.log("SUCCESS : ", JSON.stringify(data));
-                        availableTags = ["Hello", "World", "Item1", "IiiE", "Hope", "Joke", "What", "Timur"];
+                        //console.log("SUCCESS : ", JSON.stringify(data));
+                        availableTags = JSON.parse(data);
                         $('#tags').autocomplete({
                             source: availableTags
                         });
@@ -121,7 +145,7 @@
             <form:textarea path="drugUse" class="form-control" rows="5"/><br>
         </div>
 
-        <button id="submitBtn"class="btn btn-info btn-block" type="submit">Send</button>
+        <button id="submitBtn" class="btn btn-info btn-block" type="submit">Send</button>
 
     </form:form>
     <!-- Default form contact -->

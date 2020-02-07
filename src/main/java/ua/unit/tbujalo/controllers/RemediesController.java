@@ -41,6 +41,10 @@ public class RemediesController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String manageRemedies(Model model){
+        List<Remedies> allRemedies = remediesService.getAllRemedies();
+        model.addAttribute("allRemedies", allRemedies);
+
+        model.addAttribute("message", "");
         return "remediesManage";
     }
 
@@ -48,7 +52,24 @@ public class RemediesController {
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String newRemedies(Model model){
         diseaseList = diseaseService.getAllDisease();
+
         model.addAttribute("remedies", new Remedies());
+        return "addNewRemedies";
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String delete(@RequestParam("id") int id,  Model model){
+        remediesService.deleteRemediesById(id);
+
+        model.addAttribute("message", "Success");
+        return "redirect:/remedies/";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public String update(@RequestParam("id") int id,  Model model){
+        Remedies remedies = remediesService.getRemediesById(id);
+        model.addAttribute("remedies", remedies);
+        logger.debug("\tUPDATE id: "+remedies);
         return "addNewRemedies";
     }
 
@@ -75,11 +96,12 @@ public class RemediesController {
     public String addRemedies(@Valid @ModelAttribute("remedies")Remedies remedies,
                               BindingResult bindingResult, Model model){
 
-        logger.debug(remedies);
         if(bindingResult.hasErrors()){
             return "error";
         }
+        logger.debug("\tSAVE id: "+remedies);
         remediesService.addRemedies(remedies);
+        model.addAttribute("message", "Success");
         return "redirect:/remedies/";
     }
 

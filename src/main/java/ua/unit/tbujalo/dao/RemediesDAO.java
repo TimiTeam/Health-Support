@@ -10,6 +10,7 @@ public interface RemediesDAO {
 
     void addRemedies(Remedies remedies);
 
+
     void deleteRemediesById(int remediesId);
 
     Remedies getRemediesById(int remediesId);

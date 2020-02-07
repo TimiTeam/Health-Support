@@ -50,6 +50,6 @@ public class RemediesDAOImpl implements RemediesDAO {
 
     @Override
     public Remedies getRemediesById(int remediesId) {
-        return sessionFactory.getCurrentSession().byId(Remedies.class).load(remediesId);
+        return sessionFactory.getCurrentSession().get(Remedies.class, remediesId);
     }
 }

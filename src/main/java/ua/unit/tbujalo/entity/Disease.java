@@ -17,24 +17,16 @@ public class Disease implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "category")
+    private String category;
+
     @Column(name = "description")
     private String description;
 
     @Column(name = "link")
     private String link;
 
-    @Column(name = "category")
-    private String category;
-
     public Disease() {
-    }
-
-
-    public Disease(String name, String category, String description, String link) {
-        this.name = name;
-        this.description = description;
-        this.link = link;
-        this.category = category;
     }
 
     public String getName() {
@@ -51,6 +43,10 @@ public class Disease implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setDiseaseId(int diseaseId) {
+        this.diseaseId = diseaseId;
     }
 
     public String getCategory() {
@@ -75,6 +71,12 @@ public class Disease implements Serializable {
 
     @Override
     public String toString() {
-        return "Disease{" + diseaseId +", "+ name + ", " + description +'}';
+        return "Disease{" +
+                "diseaseId=" + diseaseId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", link='" + link + '\'' +
+                ", category='" + category + '\'' +
+                '}';
     }
 }

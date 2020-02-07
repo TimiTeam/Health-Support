@@ -38,4 +38,5 @@ public class RemediesServiceImpl implements RemediesService {
     public Remedies getRemediesById(int remediesId) {
         return remediesDAO.getRemediesById(remediesId);
     }
+
 }

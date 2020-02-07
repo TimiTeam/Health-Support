@@ -55,7 +55,7 @@
                         <tr>
                             <th scope="row">${disease.name}</th>
                             <td>${disease.category}</td>
-                            <td>${disease.link}</td>
+                            <td><a href="${disease.link}">${disease.link}</a></td>
                             <td>
                                 <p>
                                     <a href="${updateLink}"

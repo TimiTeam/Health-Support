@@ -2,10 +2,11 @@ package ua.unit.tbujalo.entity;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "remedies")
-public class Remedies {
+public class Remedies implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,14 +29,6 @@ public class Remedies {
     private String drugUse;
 
     public Remedies() {
-    }
-
-    public Remedies(String name, String type, String indication, String contraindication, String drugUse) {
-        this.name = name;
-        this.type = type;
-        this.indication = indication;
-        this.contraindication = contraindication;
-        this.drugUse = drugUse;
     }
 
     public String getName() {
@@ -74,6 +67,10 @@ public class Remedies {
         this.type = type;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
@@ -81,6 +78,40 @@ public class Remedies {
     public String getType() {
         return type;
     }
+/*
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        else if (obj == this)
+            return true;
+        if (!(obj instanceof  Remedies))
+            return false;
+        if (getId() != null ? !getId().equals(((Remedies) obj).getId()) : ((Remedies) obj).getId() != null)
+            return false;
+        if (name != null ? !name.equals(((Remedies) obj).getName()) : ((Remedies) obj).getName() != null)
+            return false;
+        if (indication != null ? !indication.equals(((Remedies) obj).getIndication()) : ((Remedies) obj).getIndication() != null)
+            return false;
+        if (type != null ? !type.equals(((Remedies) obj).getType()) : ((Remedies) obj).getType() != null)
+            return false;
+        if (contraindication != null ? !contraindication.equals(((Remedies) obj).getContraindication()) : ((Remedies) obj).getContraindication() != null)
+            return false;
+        if (drugUse != null ? !drugUse.equals(((Remedies) obj).getDrugUse()) : ((Remedies) obj).getDrugUse() != null)
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + (getType() != null? getType().hashCode() : 0);
+        result = 31 * result + (getIndication() != null? getIndication().hashCode() : 0);
+        result = 31 * result + (getDrugUse() != null? getDrugUse().hashCode() : 0);
+        result = 31 * result + (getContraindication() != null? getContraindication().hashCode() : 0);
+        return result;
+    }*/
 
     @Override
     public String toString() {
